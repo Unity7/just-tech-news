@@ -12,11 +12,13 @@ const exphbs = require("express-handlebars");
 const session = require("express-session");
 //import connect-session-sequelize as SequelizeStore
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+//import helpers
+const helpers = require("./utils/helpers");
 
 //instance of express named app
 const app = express();
 //instance of handlebars express
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 
 //express calling handlebars engine
 app.engine("handlebars", hbs.engine);
